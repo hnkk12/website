@@ -1,0 +1,237 @@
+@keyframes unblur {
+  to {
+    filter: blur(0);
+  }
+}
+
+.bar {
+  align-items: center;
+}
+.home {
+  position: relative; /* Làm gốc tọa độ cho phần tử con (::before) có position absolute */
+  height: 100vh; /* Chiều cao của .home chiếm toàn bộ chiều cao của trình duyệt */
+  overflow: hidden; /* Ẩn phần bị tràn ra ngoài nếu có */
+  text-align: center; /* Canh giữa nội dung văn bản */
+}
+.btn {
+  color: white;
+  font-family: "Times New Roman", Times, serif;
+  text-decoration: none;
+}
+.home::before {
+  content: ""; /* Bắt buộc phải có để hiển thị ::before */
+  position: fixed; /* Định vị tuyệt đối so với .home */
+  top: 0; /* Căn mép trên */
+  left: 0; /* Căn mép trái */
+  width: 100%; /* Rộng bằng phần tử cha */
+  height: 100%; /* Cao bằng phần tử cha */
+  background-image: url("./img/bg.jpg"); /* Gắn ảnh nền */
+  background-size: auto; /* Giữ kích thước gốc của ảnh */
+  background-repeat: repeat; /* Lặp lại ảnh cả chiều ngang và dọc nếu không đủ phủ */
+  animation: backgroundblur 0s ease forwards; /* Chạy animation làm rõ nền */
+  z-index: -1; /* Đặt lớp nền phía sau nội dung thực tế */
+}
+
+/* Animation làm nền rõ dần và hiện lên */
+@keyframes backgroundblur {
+  from {
+    filter: blur(8px); /* Bắt đầu mờ */
+    opacity: 0; /* Và ẩn */
+  }
+  to {
+    filter: blur(0); /* Rõ nét */
+    opacity: 1; /* Hiện hoàn toàn */
+  }
+}
+/* Nav Container */
+nav {
+  /* làm hiện rõ dần */
+  background-size: auto;
+  background-repeat: repeat;
+  animation: unblur 0.7s ease forwards;
+  filter: blur(8px);
+  backdrop-filter: blur(10px); /* Làm mờ nền phía sau */
+  position: relative; /* Vị trí tương đối */
+  background-color: #1b1919; /* Màu nền tối */
+  width: 500px; /* Rộng 500px */
+  height: 60px; /* Cao 60px */
+  margin: 20px auto; /* Center horizontally */
+  display: flex; /* Bật flexbox */
+  justify-content: space-around; /* Căn đều ngang */
+  align-items: center; /* Căn giữa dọc */
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(255, 255, 255, 0.1); /* Bóng mờ */
+}
+
+/* Horizontal Bars */
+.line {
+  position: absolute;
+  height: 4px;
+  background-color: #fff; /* White lines */
+  transition: all 0.3s ease;
+}
+
+.line.top {
+  width: 40px;
+  top: -6px;
+  left: 10px;
+}
+.line.bottom {
+  width: 40px;
+  bottom: -6px;
+  left: 450px;
+}
+/* On Hover: Move lines to align with the hovered button */
+.btn:nth-child(1):hover ~ .line.top {
+  left: calc(17% - 20px); /* Align with the first button */
+}
+.btn:nth-child(1):hover ~ .line.bottom {
+  left: calc(17% - 20px); /* Align with the first button */
+}
+
+.btn:nth-child(2):hover ~ .line.top {
+  left: calc(52% - 20px); /* Align with the second button */
+}
+.btn:nth-child(2):hover ~ .line.bottom {
+  left: calc(52% - 20px); /* Align with the second button */
+}
+
+.btn:nth-child(3):hover ~ .line.top {
+  left: calc(86% - 20px); /* Align with the third button */
+  width: 25px;
+}
+.btn:nth-child(3):hover ~ .line.bottom {
+  left: calc(86% - 20px); /* Align with the third button */
+  width: 25px;
+}
+
+.btn:nth-child(4):hover ~ .line.top {
+  left: calc(59.7% - 20px); /* Align with the fourth button */
+}
+.btn:nth-child(4):hover ~ .line.bottom {
+  left: calc(59.7% - 20px); /* Align with the fourth button */
+}
+
+.btn:nth-child(5):hover ~ .line.top {
+  left: calc(78% - 20px); /* Align with the fifth button */
+  width: 100px;
+}
+.btn:nth-child(5):hover ~ .line.bottom {
+  width: 100px;
+  left: calc(78% - 20px); /* Align with the fifth button */
+}
+.wrapped {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+}
+
+.text {
+  color: white;
+  font-size: 50px;
+  text-transform: capitalize;
+  text-align: center;
+  position: absolute;
+  font-family: Arial, Helvetica, sans-serif;
+  top: -500px;
+  left: 100px;
+  transform: translate(-500px, 100px);
+  animation: slide 1s ease forwards;
+}
+@keyframes slide {
+  from {
+    transform: translate(-500px, 100px);
+    opacity: 0;
+  }
+  to {
+    transform: translate(30px, 20px);
+    opacity: 1;
+  }
+}
+
+.custom_learnmore {
+  color: white;
+  text-decoration: none;
+  /* display: flex; */
+  position: relative;
+  border-radius: 5px;
+  background-color: black;
+  /* border-color: rgb(255, 225, 0); */
+  border: 2px solid rgb(255, 225, 0);
+  border-color: yellow black black yellow;
+  padding: 15px 30px;
+  /* width: 5%; */
+  object-fit: cover;
+  text-align: center;
+  /* width: 50px; /* Rộng 500px
+  height: 10px;  */
+  top: -920px;
+  left: 300px;
+  animation: learnmore1 3s ease forwards;
+}
+@keyframes learnmore1 {
+  from {
+    transform: translate(-300px);
+    opacity: 0;
+  }
+  to {
+    transform: translate(0px);
+    opacity: 1;
+  }
+}
+.custom_learnmore:hover {
+  background-color: orangered;
+  color: black;
+  transition: all 0.7s ease-in-out;
+  transform: scale(1.05);
+}
+/* my profile */
+.section {
+  background-color: rgba(26, 25, 25, 0.95);
+  background-size: auto;
+  object-fit: cover;
+  text-align: center;
+  padding: 10px 100px;
+  width: 1150px;
+  height: 600px;
+  position: absolute;
+  top: 130%;
+  left: 50%;
+  transform: translate(-50%);
+  z-index: -1;
+}
+.profile {
+  position: absolute;
+  top: 10%; /* Căn chữ xuống khoảng 20% màn hình */
+  left: 50%; /* Đẩy chữ vào giữa theo chiều ngang */
+  transform: translate(-50%, -50%); /* Dịch ngược lại 50% để căn giữa */
+
+  color: yellow;
+  font-size: 48px;
+  font-weight: bold;
+  font-family: "Times New Roman", serif;
+  animation: backgroundblur 5s ease forwards;
+}
+.image {
+  position: absolute;
+  width: 30%;
+  top: 20%;
+  left: 35%;
+  border-color: gray;
+  border-radius: 10%;
+}
+.loginweb {
+  color: white;
+  text-decoration: none;
+  background-color: rgb(0, 0, 0);
+  border-color: yellow black black yellow;
+  border-radius: 100px;
+  padding: 20px 30px;
+  /* width: 5%; */
+  object-fit: cover;
+  text-align: center;
+  position: absolute;
+  top: 9.5%;
+  right: 0%;
+  transform: translate(-50%, -50%);
+}

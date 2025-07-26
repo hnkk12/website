@@ -1,0 +1,160 @@
+@keyframes unblur {
+  to {
+    filter: blur(0);
+  }
+}
+
+.bar {
+  align-items: center;
+}
+.home {
+  position: relative; /* Làm gốc tọa độ cho phần tử con (::before) có position absolute */
+  height: 100vh; /* Chiều cao của .home chiếm toàn bộ chiều cao của trình duyệt */
+  overflow: hidden; /* Ẩn phần bị tràn ra ngoài nếu có */
+  text-align: center; /* Canh giữa nội dung văn bản */
+}
+.btn {
+  color: white;
+  font-family: "Times New Roman", Times, serif;
+  text-decoration: none;
+}
+.home::before {
+  content: ""; /* Bắt buộc phải có để hiển thị ::before */
+  position: fixed; /* Định vị tuyệt đối so với .home */
+  top: 0; /* Căn mép trên */
+  left: 0; /* Căn mép trái */
+  width: 100%; /* Rộng bằng phần tử cha */
+  height: 100%; /* Cao bằng phần tử cha */
+  background-image: url("./img/empty-concrete-room-with-neon-lights.jpg"); /* Gắn ảnh nền */
+  background-size: cover; /* Giữ kích thước gốc của ảnh */
+  background-repeat: repeat; /* Lặp lại ảnh cả chiều ngang và dọc nếu không đủ phủ */
+  animation: backgroundblur 0s ease forwards; /* Chạy animation làm rõ nền */
+  z-index: -1; /* Đặt lớp nền phía sau nội dung thực tế */
+}
+
+/* Animation làm nền rõ dần và hiện lên */
+@keyframes backgroundblur {
+  from {
+    filter: blur(8px); /* Bắt đầu mờ */
+    opacity: 0; /* Và ẩn */
+  }
+  to {
+    filter: blur(0); /* Rõ nét */
+    opacity: 1; /* Hiện hoàn toàn */
+  }
+}
+/* Nav Container */
+nav {
+  /* làm hiện rõ dần */
+  background-size: auto;
+  background-repeat: repeat;
+  animation: unblur 0.7s ease forwards;
+  filter: blur(8px);
+  backdrop-filter: blur(10px); /* Làm mờ nền phía sau */
+  position: relative; /* Vị trí tương đối */
+  background-color: #1b1919; /* Màu nền tối */
+  width: 500px; /* Rộng 500px */
+  height: 60px; /* Cao 60px */
+  margin: 20px auto; /* Center horizontally */
+  display: flex; /* Bật flexbox */
+  justify-content: space-around; /* Căn đều ngang */
+  align-items: center; /* Căn giữa dọc */
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(255, 255, 255, 0.1); /* Bóng mờ */
+}
+
+/* Horizontal Bars */
+.line {
+  position: absolute;
+  height: 4px;
+  background-color: #fff; /* White lines */
+  transition: all 0.3s ease;
+}
+
+.line.top {
+  width: 40px;
+  top: -6px;
+  left: 10px;
+}
+
+.line.bottom {
+  width: 40px;
+  bottom: -6px;
+  left: 450px;
+}
+/* On Hover: Move lines to align with the hovered button */
+.btn:nth-child(1):hover ~ .line.top {
+  left: calc(17% - 20px); /* Align with the first button */
+}
+.btn:nth-child(1):hover ~ .line.bottom {
+  left: calc(17% - 20px); /* Align with the first button */
+}
+
+.btn:nth-child(2):hover ~ .line.top {
+  left: calc(52% - 20px); /* Align with the second button */
+}
+.btn:nth-child(2):hover ~ .line.bottom {
+  left: calc(52% - 20px); /* Align with the second button */
+}
+
+.btn:nth-child(3):hover ~ .line.top {
+  left: calc(86% - 20px); /* Align with the third button */
+  width: 25px;
+}
+.btn:nth-child(3):hover ~ .line.bottom {
+  left: calc(86% - 20px); /* Align with the third button */
+  width: 25px;
+}
+
+.btn:nth-child(4):hover ~ .line.top {
+  left: calc(59.7% - 20px); /* Align with the fourth button */
+}
+.btn:nth-child(4):hover ~ .line.bottom {
+  left: calc(59.7% - 20px); /* Align with the fourth button */
+}
+
+.btn:nth-child(5):hover ~ .line.top {
+  left: calc(78% - 20px); /* Align with the fifth button */
+  width: 100px;
+}
+.btn:nth-child(5):hover ~ .line.bottom {
+  width: 100px;
+  left: calc(78% - 20px); /* Align with the fifth button */
+}
+.input {
+  background-color: rgba(46, 44, 44, 0.95);
+  background-size: auto;
+  object-fit: cover;
+  text-align: center;
+  padding: 10px 0px;
+  width: 400px;
+  height: 300px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.forget {
+  text-decoration: none;
+  color: white;
+  font-style: bold;
+  font-size: 120%;
+}
+.submit {
+  background-color: rgba(46, 44, 44, 0.95);
+  color: white;
+  border-radius: 10%;
+  padding: 10px 10px;
+}
+.username {
+  background-color: rgba(46, 44, 44, 0.95);
+  color: white;
+  border-radius: 10%;
+  padding: 5px 10px;
+}
+.password {
+  background-color: rgba(46, 44, 44, 0.95);
+  color: white;
+  border-radius: 10%;
+  padding: 5px 10px;
+}
