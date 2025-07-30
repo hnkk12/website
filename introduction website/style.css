@@ -165,7 +165,7 @@ nav {
   text-align: center;
   /* width: 50px; /* Rộng 500px
   height: 10px;  */
-  top: -920px;
+  top: -850px;
   left: 300px;
   animation: learnmore1 3s ease forwards;
 }
@@ -206,7 +206,7 @@ nav {
   left: 50%; /* Đẩy chữ vào giữa theo chiều ngang */
   transform: translate(-50%, -50%); /* Dịch ngược lại 50% để căn giữa */
 
-  color: white;
+  color: yellow;
   font-size: 48px;
   font-weight: bold;
   font-family: "Times New Roman", serif;
