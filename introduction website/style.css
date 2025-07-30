@@ -150,7 +150,7 @@ nav {
 }
 
 .custom_learnmore {
-  color: white;
+  color: rgb(255, 255, 255);
   text-decoration: none;
   /* display: flex; */
   position: relative;
@@ -206,7 +206,7 @@ nav {
   left: 50%; /* Đẩy chữ vào giữa theo chiều ngang */
   transform: translate(-50%, -50%); /* Dịch ngược lại 50% để căn giữa */
 
-  color: yellow;
+  color: white;
   font-size: 48px;
   font-weight: bold;
   font-family: "Times New Roman", serif;
